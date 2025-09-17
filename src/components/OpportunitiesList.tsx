@@ -1,0 +1,110 @@
+import React from 'react';
+import { Opportunity } from '../types';
+
+interface OpportunitiesListProps {
+  opportunities: Opportunity[];
+}
+
+export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => {
+  const getStageColor = (stage: string) => {
+    switch (stage) {
+      case 'prospecting': return 'bg-blue-100 text-blue-800';
+      case 'qualification': return 'bg-yellow-100 text-yellow-800';
+      case 'proposal': return 'bg-orange-100 text-orange-800';
+      case 'negotiation': return 'bg-purple-100 text-purple-800';
+      case 'closed-won': return 'bg-green-100 text-green-800';
+      case 'closed-lost': return 'bg-red-100 text-red-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStageLabel = (stage: string) => {
+    switch (stage) {
+      case 'prospecting': return 'Prospecção';
+      case 'qualification': return 'Qualificação';
+      case 'proposal': return 'Proposta';
+      case 'negotiation': return 'Negociação';
+      case 'closed-won': return 'Ganho';
+      case 'closed-lost': return 'Perdido';
+      default: return stage;
+    }
+  };
+
+  const formatCurrency = (amount?: number) => {
+    if (!amount) return '-';
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(amount);
+  };
+
+  if (opportunities.length === 0) {
+    return (
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
+        <div className="text-center">
+          <div className="text-gray-500 dark:text-gray-400 mb-2">Nenhuma oportunidade criada ainda</div>
+          <div className="text-sm text-gray-400 dark:text-gray-500">
+            Converta leads para criar oportunidades
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          Oportunidades ({opportunities.length})
+        </h3>
+      </div>
+      
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead className="bg-gray-50 dark:bg-gray-700">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Nome
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Conta
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Estágio
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Valor
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            {opportunities.map((opportunity) => (
+              <tr key={opportunity.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    {opportunity.name}
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-gray-900 dark:text-gray-100">
+                    {opportunity.accountName}
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStageColor(opportunity.stage)}`}>
+                    {getStageLabel(opportunity.stage)}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    {formatCurrency(opportunity.amount)}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "João Silva",
+    "company": "TechCorp Brasil",
+    "email": "joao.silva@techcorp.com.br",
+    "source": "Website",
+    "score": 85,
+    "status": "new"
+  },
+  {
+    "id": 2,
+    "name": "Maria Santos",
+    "company": "Inovação Digital Ltda",
+    "email": "maria.santos@inovacao.com.br",
+    "source": "LinkedIn",
+    "score": 92,
+    "status": "qualified"
+  },
+  {
+    "id": 3,
+    "name": "Pedro Oliveira",
+    "company": "StartupXYZ",
+    "email": "pedro@startupxyz.com",
+    "source": "Referral",
+    "score": 78,
+    "status": "contacted"
+  },
+  {
+    "id": 4,
+    "name": "Ana Costa",
+    "company": "Empresa ABC",
+    "email": "ana.costa@empresaabc.com.br",
+    "source": "Email Marketing",
+    "score": 65,
+    "status": "new"
+  },
+  {
+    "id": 5,
+    "name": "Carlos Ferreira",
+    "company": "Grupo Empresarial DEF",
+    "email": "carlos.ferreira@grupodef.com.br",
+    "source": "Evento",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 6,
+    "name": "Lucia Martins",
+    "company": "Consultoria GHI",
+    "email": "lucia.martins@consultoriaghi.com.br",
+    "source": "Website",
+    "score": 73,
+    "status": "contacted"
+  },
+  {
+    "id": 7,
+    "name": "Roberto Alves",
+    "company": "Tech Solutions",
+    "email": "roberto.alves@techsolutions.com.br",
+    "source": "LinkedIn",
+    "score": 91,
+    "status": "new"
+  },
+  {
+    "id": 8,
+    "name": "Fernanda Lima",
+    "company": "Digital Agency",
+    "email": "fernanda.lima@digitalagency.com.br",
+    "source": "Referral",
+    "score": 82,
+    "status": "qualified"
+  },
+  {
+    "id": 9,
+    "name": "Ricardo Souza",
+    "company": "Corporação JKL",
+    "email": "ricardo.souza@corporacaojkl.com.br",
+    "source": "Email Marketing",
+    "score": 69,
+    "status": "contacted"
+  },
+  {
+    "id": 10,
+    "name": "Juliana Ribeiro",
+    "company": "Innovation Hub",
+    "email": "juliana.ribeiro@innovationhub.com.br",
+    "source": "Website",
+    "score": 95,
+    "status": "new"
+  }
+]
