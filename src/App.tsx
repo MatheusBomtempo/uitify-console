@@ -5,6 +5,7 @@ import { LeadsList } from './components/LeadsList';
 import { LeadDetailPanel } from './components/LeadDetailPanel';
 import { OpportunitiesList } from './components/OpportunitiesList';
 import { ThemeToggle } from './components/ThemeToggle';
+import { ConfirmModal } from './components/ConfirmModal';
 import { Lead } from './types';
 
 function App() {
@@ -23,6 +24,20 @@ function App() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'leads' | 'opportunities'>('leads');
+  
+  // Confirm modal state
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+    type?: 'danger' | 'warning' | 'info';
+  }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    onConfirm: () => {}
+  });
 
   const handleLeadSelect = (lead: Lead) => {
     setSelectedLead(lead);
@@ -42,16 +57,37 @@ function App() {
     convertToOpportunity(lead, amount);
   };
 
-  const handleDeleteLead = async (id: number) => {
-    if (window.confirm('Are you sure you want to delete this lead?')) {
-      await deleteLead(id);
-    }
+  const handleDeleteLead = (id: number) => {
+    const lead = leads.find(l => l.id === id);
+    setConfirmModal({
+      isOpen: true,
+      title: 'Delete Lead',
+      message: `Are you sure you want to delete "${lead?.name}"? This action cannot be undone.`,
+      onConfirm: async () => {
+        await deleteLead(id);
+        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+      },
+      type: 'danger'
+    });
   };
 
-  const handleDeleteOpportunity = async (id: number) => {
-    if (window.confirm('Are you sure you want to delete this opportunity?')) {
-      await deleteOpportunity(id);
-    }
+  const handleDeleteOpportunity = (id: number) => {
+    const opportunity = opportunities.find(o => o.id === id);
+    setConfirmModal({
+      isOpen: true,
+      title: 'Delete Opportunity',
+      message: `Are you sure you want to delete "${opportunity?.name}"? This action cannot be undone.`,
+      onConfirm: async () => {
+        await deleteOpportunity(id);
+        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+      },
+      type: 'danger'
+    });
+  };
+
+  const handleEditLead = (lead: Lead) => {
+    setSelectedLead(lead);
+    setIsPanelOpen(true);
   };
 
   return (
@@ -135,6 +171,7 @@ function App() {
           <LeadsList
             leads={leads}
             onLeadSelect={handleLeadSelect}
+            onLeadEdit={handleEditLead}
             onLeadDelete={handleDeleteLead}
             loading={loading}
             error={null} // Error now displayed globally
@@ -154,6 +191,18 @@ function App() {
         onClose={handlePanelClose}
         onSave={handleLeadSave}
         onConvert={handleConvertLead}
+      />
+
+      {/* Confirm Modal */}
+      <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        title={confirmModal.title}
+        message={confirmModal.message}
+        confirmText="Delete"
+        cancelText="Cancel"
+        type={confirmModal.type}
+        onConfirm={confirmModal.onConfirm}
+        onCancel={() => setConfirmModal(prev => ({ ...prev, isOpen: false }))}
       />
     </div>
   );

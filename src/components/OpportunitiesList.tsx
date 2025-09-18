@@ -3,9 +3,10 @@ import { Opportunity } from '../types';
 
 interface OpportunitiesListProps {
   opportunities: Opportunity[];
+  onOpportunityDelete: (id: number) => void;
 }
 
-export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => {
+export const OpportunitiesList = ({ opportunities, onOpportunityDelete }: OpportunitiesListProps) => {
   const getStageColor = (stage: string) => {
     switch (stage) {
       case 'prospecting': return 'bg-blue-100 text-blue-800';
@@ -36,6 +37,11 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
       style: 'currency',
       currency: 'USD'
     }).format(amount);
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation(); // Prevent any parent click events
+    onOpportunityDelete(id);
   };
 
   if (opportunities.length === 0) {
@@ -75,6 +81,9 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Amount
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -99,6 +108,18 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
                   <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     {formatCurrency(opportunity.amount)}
                   </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    onClick={(e) => handleDeleteClick(e, opportunity.id)}
+                    className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 dark:text-red-400 dark:bg-red-900/20 dark:hover:bg-red-900/40 dark:focus:ring-red-400 transition-colors"
+                    title="Delete opportunity"
+                  >
+                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
