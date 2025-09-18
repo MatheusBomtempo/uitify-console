@@ -88,5 +88,815 @@
     "source": "Website",
     "score": 95,
     "status": "new"
+  },
+  {
+    "id": 11,
+    "name": "André Mendes",
+    "company": "Fintech Solutions",
+    "email": "andre.mendes@fintechsolutions.com.br",
+    "source": "LinkedIn",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": 12,
+    "name": "Camila Rodrigues",
+    "company": "E-commerce Plus",
+    "email": "camila.rodrigues@ecommerceplus.com.br",
+    "source": "Website",
+    "score": 76,
+    "status": "new"
+  },
+  {
+    "id": 13,
+    "name": "Diego Fernandes",
+    "company": "Cloud Systems",
+    "email": "diego.fernandes@cloudsystems.com.br",
+    "source": "Evento",
+    "score": 83,
+    "status": "contacted"
+  },
+  {
+    "id": 14,
+    "name": "Elena Vasquez",
+    "company": "Data Analytics Corp",
+    "email": "elena.vasquez@dataanalytics.com.br",
+    "source": "Referral",
+    "score": 94,
+    "status": "qualified"
+  },
+  {
+    "id": 15,
+    "name": "Fábio Castro",
+    "company": "Mobile Apps Ltd",
+    "email": "fabio.castro@mobileapps.com.br",
+    "source": "Email Marketing",
+    "score": 71,
+    "status": "new"
+  },
+  {
+    "id": 16,
+    "name": "Gabriela Santos",
+    "company": "AI Solutions",
+    "email": "gabriela.santos@aisolutions.com.br",
+    "source": "LinkedIn",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": 17,
+    "name": "Henrique Almeida",
+    "company": "Blockchain Tech",
+    "email": "henrique.almeida@blockchaintech.com.br",
+    "source": "Website",
+    "score": 81,
+    "status": "contacted"
+  },
+  {
+    "id": 18,
+    "name": "Isabela Costa",
+    "company": "Cybersecurity Pro",
+    "email": "isabela.costa@cybersecuritypro.com.br",
+    "source": "Evento",
+    "score": 92,
+    "status": "qualified"
+  },
+  {
+    "id": 19,
+    "name": "João Pedro Lima",
+    "company": "DevOps Solutions",
+    "email": "joao.pedro@devopssolutions.com.br",
+    "source": "Referral",
+    "score": 77,
+    "status": "new"
+  },
+  {
+    "id": 20,
+    "name": "Karina Oliveira",
+    "company": "UX Design Studio",
+    "email": "karina.oliveira@uxdesignstudio.com.br",
+    "source": "LinkedIn",
+    "score": 85,
+    "status": "contacted"
+  },
+  {
+    "id": 21,
+    "name": "Lucas Pereira",
+    "company": "IoT Innovations",
+    "email": "lucas.pereira@iotinnovations.com.br",
+    "source": "Website",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 22,
+    "name": "Marina Silva",
+    "company": "Digital Marketing Hub",
+    "email": "marina.silva@digitalmarketinghub.com.br",
+    "source": "Email Marketing",
+    "score": 73,
+    "status": "new"
+  },
+  {
+    "id": 23,
+    "name": "Nicolas Torres",
+    "company": "Cloud Computing Inc",
+    "email": "nicolas.torres@cloudcomputing.com.br",
+    "source": "Evento",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": 24,
+    "name": "Olivia Martins",
+    "company": "Software Development Co",
+    "email": "olivia.martins@softwaredev.com.br",
+    "source": "Referral",
+    "score": 79,
+    "status": "contacted"
+  },
+  {
+    "id": 25,
+    "name": "Paulo Henrique",
+    "company": "Data Science Lab",
+    "email": "paulo.henrique@datasciencelab.com.br",
+    "source": "LinkedIn",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": 26,
+    "name": "Quitéria Barbosa",
+    "company": "Tech Consulting",
+    "email": "quiteria.barbosa@techconsulting.com.br",
+    "source": "Website",
+    "score": 82,
+    "status": "new"
+  },
+  {
+    "id": 27,
+    "name": "Rafael Gomes",
+    "company": "Machine Learning Corp",
+    "email": "rafael.gomes@machinelearning.com.br",
+    "source": "Evento",
+    "score": 93,
+    "status": "qualified"
+  },
+  {
+    "id": 28,
+    "name": "Sofia Ribeiro",
+    "company": "Web Development Agency",
+    "email": "sofia.ribeiro@webdevagency.com.br",
+    "source": "Email Marketing",
+    "score": 74,
+    "status": "contacted"
+  },
+  {
+    "id": 29,
+    "name": "Thiago Mendonça",
+    "company": "Cloud Infrastructure",
+    "email": "thiago.mendonca@cloudinfra.com.br",
+    "source": "LinkedIn",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": 30,
+    "name": "Úrsula Costa",
+    "company": "Mobile Development",
+    "email": "ursula.costa@mobiledev.com.br",
+    "source": "Referral",
+    "score": 80,
+    "status": "new"
+  },
+  {
+    "id": 31,
+    "name": "Vitor Alves",
+    "company": "AI Research Lab",
+    "email": "vitor.alves@airesearchlab.com.br",
+    "source": "Website",
+    "score": 95,
+    "status": "qualified"
+  },
+  {
+    "id": 32,
+    "name": "Wanda Ferreira",
+    "company": "Digital Transformation",
+    "email": "wanda.ferreira@digitaltransformation.com.br",
+    "source": "Evento",
+    "score": 78,
+    "status": "contacted"
+  },
+  {
+    "id": 33,
+    "name": "Xavier Santos",
+    "company": "Blockchain Solutions",
+    "email": "xavier.santos@blockchainsolutions.com.br",
+    "source": "LinkedIn",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": 34,
+    "name": "Yara Oliveira",
+    "company": "Tech Innovation Hub",
+    "email": "yara.oliveira@techinnovationhub.com.br",
+    "source": "Email Marketing",
+    "score": 72,
+    "status": "new"
+  },
+  {
+    "id": 35,
+    "name": "Zeca Rodrigues",
+    "company": "Cloud Services Pro",
+    "email": "zeca.rodrigues@cloudservicespro.com.br",
+    "source": "Referral",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": 36,
+    "name": "Amanda Silva",
+    "company": "DevOps Solutions",
+    "email": "amanda.silva@devopssolutions.com.br",
+    "source": "Website",
+    "score": 81,
+    "status": "contacted"
+  },
+  {
+    "id": 37,
+    "name": "Bruno Costa",
+    "company": "Data Analytics Inc",
+    "email": "bruno.costa@dataanalyticsinc.com.br",
+    "source": "Evento",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": 38,
+    "name": "Carla Mendes",
+    "company": "UX/UI Design Studio",
+    "email": "carla.mendes@uxuidesignstudio.com.br",
+    "source": "LinkedIn",
+    "score": 77,
+    "status": "new"
+  },
+  {
+    "id": 39,
+    "name": "Daniel Lima",
+    "company": "IoT Development",
+    "email": "daniel.lima@iotdevelopment.com.br",
+    "source": "Email Marketing",
+    "score": 83,
+    "status": "contacted"
+  },
+  {
+    "id": 40,
+    "name": "Eduarda Alves",
+    "company": "Cybersecurity Solutions",
+    "email": "eduarda.alves@cybersecuritysolutions.com.br",
+    "source": "Referral",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": 41,
+    "name": "Felipe Torres",
+    "company": "Mobile Apps Studio",
+    "email": "felipe.torres@mobileappsstudio.com.br",
+    "source": "Website",
+    "score": 75,
+    "status": "new"
+  },
+  {
+    "id": 42,
+    "name": "Giovana Martins",
+    "company": "Cloud Computing Solutions",
+    "email": "giovana.martins@cloudcomputingsolutions.com.br",
+    "source": "Evento",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 43,
+    "name": "Hugo Pereira",
+    "company": "AI Development Lab",
+    "email": "hugo.pereira@aidevelopmentlab.com.br",
+    "source": "LinkedIn",
+    "score": 82,
+    "status": "contacted"
+  },
+  {
+    "id": 44,
+    "name": "Iris Barbosa",
+    "company": "Digital Marketing Agency",
+    "email": "iris.barbosa@digitalmarketingagency.com.br",
+    "source": "Email Marketing",
+    "score": 79,
+    "status": "new"
+  },
+  {
+    "id": 45,
+    "name": "Júlio Gomes",
+    "company": "Software Engineering Corp",
+    "email": "julio.gomes@softwareengineering.com.br",
+    "source": "Referral",
+    "score": 90,
+    "status": "qualified"
+  },
+  {
+    "id": 46,
+    "name": "Larissa Ribeiro",
+    "company": "Tech Consulting Group",
+    "email": "larissa.ribeiro@techconsultinggroup.com.br",
+    "source": "Website",
+    "score": 76,
+    "status": "contacted"
+  },
+  {
+    "id": 47,
+    "name": "Marcos Mendonça",
+    "company": "Machine Learning Solutions",
+    "email": "marcos.mendonca@machinelearningsolutions.com.br",
+    "source": "Evento",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": 48,
+    "name": "Natália Costa",
+    "company": "Web Development Studio",
+    "email": "natalia.costa@webdevelopmentstudio.com.br",
+    "source": "LinkedIn",
+    "score": 74,
+    "status": "new"
+  },
+  {
+    "id": 49,
+    "name": "Otávio Alves",
+    "company": "Cloud Infrastructure Solutions",
+    "email": "otavio.alves@cloudinfrastructuresolutions.com.br",
+    "source": "Email Marketing",
+    "score": 85,
+    "status": "contacted"
+  },
+  {
+    "id": 50,
+    "name": "Patrícia Ferreira",
+    "company": "Data Science Innovations",
+    "email": "patricia.ferreira@datascienceinnovations.com.br",
+    "source": "Referral",
+    "score": 92,
+    "status": "qualified"
+  },
+  {
+    "id": 51,
+    "name": "Rogério Santos",
+    "company": "Mobile Development Hub",
+    "email": "rogerio.santos@mobiledevelopmenthub.com.br",
+    "source": "Website",
+    "score": 78,
+    "status": "new"
+  },
+  {
+    "id": 52,
+    "name": "Sandra Oliveira",
+    "company": "AI Research Solutions",
+    "email": "sandra.oliveira@airesearchsolutions.com.br",
+    "source": "Evento",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": 53,
+    "name": "Túlio Rodrigues",
+    "company": "Digital Transformation Lab",
+    "email": "tulio.rodrigues@digitaltransformationlab.com.br",
+    "source": "LinkedIn",
+    "score": 81,
+    "status": "contacted"
+  },
+  {
+    "id": 54,
+    "name": "Vanessa Silva",
+    "company": "Blockchain Development",
+    "email": "vanessa.silva@blockchaindevelopment.com.br",
+    "source": "Email Marketing",
+    "score": 73,
+    "status": "new"
+  },
+  {
+    "id": 55,
+    "name": "Wagner Lima",
+    "company": "Tech Innovation Solutions",
+    "email": "wagner.lima@techinnovationsolutions.com.br",
+    "source": "Referral",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": 56,
+    "name": "Ximena Costa",
+    "company": "Cloud Services Development",
+    "email": "ximena.costa@cloudservicesdevelopment.com.br",
+    "source": "Website",
+    "score": 80,
+    "status": "contacted"
+  },
+  {
+    "id": 57,
+    "name": "Yuri Alves",
+    "company": "DevOps Innovations",
+    "email": "yuri.alves@devopsinnovations.com.br",
+    "source": "Evento",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": 58,
+    "name": "Zélia Mendes",
+    "company": "Data Analytics Solutions",
+    "email": "zelia.mendes@dataanalyticssolutions.com.br",
+    "source": "LinkedIn",
+    "score": 77,
+    "status": "new"
+  },
+  {
+    "id": 59,
+    "name": "Adriano Torres",
+    "company": "UX/UI Design Solutions",
+    "email": "adriano.torres@uxuidesignsolutions.com.br",
+    "source": "Email Marketing",
+    "score": 82,
+    "status": "contacted"
+  },
+  {
+    "id": 60,
+    "name": "Beatriz Gomes",
+    "company": "IoT Solutions Lab",
+    "email": "beatriz.gomes@iotsolutionslab.com.br",
+    "source": "Referral",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 61,
+    "name": "César Barbosa",
+    "company": "Cybersecurity Innovations",
+    "email": "cesar.barbosa@cybersecurityinnovations.com.br",
+    "source": "Website",
+    "score": 75,
+    "status": "new"
+  },
+  {
+    "id": 62,
+    "name": "Débora Ribeiro",
+    "company": "Mobile Apps Solutions",
+    "email": "debora.ribeiro@mobileappssolutions.com.br",
+    "source": "Evento",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": 63,
+    "name": "Emanuel Mendonça",
+    "company": "Cloud Computing Innovations",
+    "email": "emanuel.mendonca@cloudcomputinginnovations.com.br",
+    "source": "LinkedIn",
+    "score": 79,
+    "status": "contacted"
+  },
+  {
+    "id": 64,
+    "name": "Fabiana Costa",
+    "company": "AI Development Solutions",
+    "email": "fabiana.costa@aidevelopmentsolutions.com.br",
+    "source": "Email Marketing",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": 65,
+    "name": "Gustavo Alves",
+    "company": "Digital Marketing Innovations",
+    "email": "gustavo.alves@digitalmarketinginnovations.com.br",
+    "source": "Referral",
+    "score": 74,
+    "status": "new"
+  },
+  {
+    "id": 66,
+    "name": "Helena Ferreira",
+    "company": "Software Engineering Solutions",
+    "email": "helena.ferreira@softwareengineeringsolutions.com.br",
+    "source": "Website",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": 67,
+    "name": "Igor Santos",
+    "company": "Tech Consulting Innovations",
+    "email": "igor.santos@techconsultinginnovations.com.br",
+    "source": "Evento",
+    "score": 76,
+    "status": "contacted"
+  },
+  {
+    "id": 68,
+    "name": "Jéssica Oliveira",
+    "company": "Machine Learning Development",
+    "email": "jessica.oliveira@machinelearningdevelopment.com.br",
+    "source": "LinkedIn",
+    "score": 90,
+    "status": "qualified"
+  },
+  {
+    "id": 69,
+    "name": "Kleber Lima",
+    "company": "Web Development Solutions",
+    "email": "kleber.lima@webdevelopmentsolutions.com.br",
+    "source": "Email Marketing",
+    "score": 78,
+    "status": "new"
+  },
+  {
+    "id": 70,
+    "name": "Luciana Rodrigues",
+    "company": "Cloud Infrastructure Innovations",
+    "email": "luciana.rodrigues@cloudinfrastructureinnovations.com.br",
+    "source": "Referral",
+    "score": 83,
+    "status": "contacted"
+  },
+  {
+    "id": 71,
+    "name": "Mateus Silva",
+    "company": "Data Science Solutions",
+    "email": "mateus.silva@datasciencesolutions.com.br",
+    "source": "Website",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": 72,
+    "name": "Nathalia Costa",
+    "company": "Mobile Development Innovations",
+    "email": "nathalia.costa@mobiledevelopmentinnovations.com.br",
+    "source": "Evento",
+    "score": 81,
+    "status": "new"
+  },
+  {
+    "id": 73,
+    "name": "Osmar Alves",
+    "company": "AI Research Development",
+    "email": "osmar.alves@airesearchdevelopment.com.br",
+    "source": "LinkedIn",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": 74,
+    "name": "Priscila Mendes",
+    "company": "Digital Transformation Solutions",
+    "email": "priscila.mendes@digitaltransformationsolutions.com.br",
+    "source": "Email Marketing",
+    "score": 72,
+    "status": "contacted"
+  },
+  {
+    "id": 75,
+    "name": "Quirino Torres",
+    "company": "Blockchain Solutions Lab",
+    "email": "quirino.torres@blockchainsolutionslab.com.br",
+    "source": "Referral",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": 76,
+    "name": "Raquel Gomes",
+    "company": "Tech Innovation Development",
+    "email": "raquel.gomes@techinnovationdevelopment.com.br",
+    "source": "Website",
+    "score": 77,
+    "status": "new"
+  },
+  {
+    "id": 77,
+    "name": "Samuel Barbosa",
+    "company": "Cloud Services Innovations",
+    "email": "samuel.barbosa@cloudservicesinnovations.com.br",
+    "source": "Evento",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 78,
+    "name": "Tatiana Ribeiro",
+    "company": "DevOps Solutions Lab",
+    "email": "tatiana.ribeiro@devopssolutionslab.com.br",
+    "source": "LinkedIn",
+    "score": 80,
+    "status": "contacted"
+  },
+  {
+    "id": 79,
+    "name": "Ubiratan Mendonça",
+    "company": "Data Analytics Development",
+    "email": "ubiratan.mendonca@dataanalyticsdevelopment.com.br",
+    "source": "Email Marketing",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": 80,
+    "name": "Viviane Costa",
+    "company": "UX/UI Design Innovations",
+    "email": "viviane.costa@uxuidesigninnovations.com.br",
+    "source": "Referral",
+    "score": 73,
+    "status": "new"
+  },
+  {
+    "id": 81,
+    "name": "Wesley Alves",
+    "company": "IoT Development Solutions",
+    "email": "wesley.alves@iotdevelopmentsolutions.com.br",
+    "source": "Website",
+    "score": 82,
+    "status": "contacted"
+  },
+  {
+    "id": 82,
+    "name": "Yasmin Ferreira",
+    "company": "Cybersecurity Solutions Lab",
+    "email": "yasmin.ferreira@cybersecuritysolutionslab.com.br",
+    "source": "Evento",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": 83,
+    "name": "Zeca Santos",
+    "company": "Mobile Apps Development",
+    "email": "zeca.santos@mobileappsdevelopment.com.br",
+    "source": "LinkedIn",
+    "score": 76,
+    "status": "new"
+  },
+  {
+    "id": 84,
+    "name": "Alice Oliveira",
+    "company": "Cloud Computing Development",
+    "email": "alice.oliveira@cloudcomputingdevelopment.com.br",
+    "source": "Email Marketing",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": 85,
+    "name": "Bernardo Lima",
+    "company": "AI Development Innovations",
+    "email": "bernardo.lima@aidevelopmentinnovations.com.br",
+    "source": "Referral",
+    "score": 79,
+    "status": "contacted"
+  },
+  {
+    "id": 86,
+    "name": "Carla Rodrigues",
+    "company": "Digital Marketing Solutions",
+    "email": "carla.rodrigues@digitalmarketingsolutions.com.br",
+    "source": "Website",
+    "score": 83,
+    "status": "qualified"
+  },
+  {
+    "id": 87,
+    "name": "Diego Silva",
+    "company": "Software Engineering Innovations",
+    "email": "diego.silva@softwareengineeringinnovations.com.br",
+    "source": "Evento",
+    "score": 75,
+    "status": "new"
+  },
+  {
+    "id": 88,
+    "name": "Elena Costa",
+    "company": "Tech Consulting Development",
+    "email": "elena.costa@techconsultingdevelopment.com.br",
+    "source": "LinkedIn",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": 89,
+    "name": "Fábio Alves",
+    "company": "Machine Learning Innovations",
+    "email": "fabio.alves@machinelearninginnovations.com.br",
+    "source": "Email Marketing",
+    "score": 78,
+    "status": "contacted"
+  },
+  {
+    "id": 90,
+    "name": "Gabriela Mendes",
+    "company": "Web Development Innovations",
+    "email": "gabriela.mendes@webdevelopmentinnovations.com.br",
+    "source": "Referral",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": 91,
+    "name": "Henrique Torres",
+    "company": "Cloud Infrastructure Development",
+    "email": "henrique.torres@cloudinfrastructuredevelopment.com.br",
+    "source": "Website",
+    "score": 81,
+    "status": "new"
+  },
+  {
+    "id": 92,
+    "name": "Isabela Gomes",
+    "company": "Data Science Innovations Lab",
+    "email": "isabela.gomes@datascienceinnovationslab.com.br",
+    "source": "Evento",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": 93,
+    "name": "João Barbosa",
+    "company": "Mobile Development Solutions",
+    "email": "joao.barbosa@mobiledevelopmentsolutions.com.br",
+    "source": "LinkedIn",
+    "score": 74,
+    "status": "contacted"
+  },
+  {
+    "id": 94,
+    "name": "Karina Ribeiro",
+    "company": "AI Research Innovations",
+    "email": "karina.ribeiro@airesearchinnovations.com.br",
+    "source": "Email Marketing",
+    "score": 92,
+    "status": "qualified"
+  },
+  {
+    "id": 95,
+    "name": "Lucas Mendonça",
+    "company": "Digital Transformation Development",
+    "email": "lucas.mendonca@digitaltransformationdevelopment.com.br",
+    "source": "Referral",
+    "score": 77,
+    "status": "new"
+  },
+  {
+    "id": 96,
+    "name": "Marina Costa",
+    "company": "Blockchain Development Solutions",
+    "email": "marina.costa@blockchaindevelopmentsolutions.com.br",
+    "source": "Website",
+    "score": 84,
+    "status": "contacted"
+  },
+  {
+    "id": 97,
+    "name": "Nicolas Alves",
+    "company": "Tech Innovation Lab",
+    "email": "nicolas.alves@techinnovationlab.com.br",
+    "source": "Evento",
+    "score": 90,
+    "status": "qualified"
+  },
+  {
+    "id": 98,
+    "name": "Olivia Ferreira",
+    "company": "Cloud Services Development Lab",
+    "email": "olivia.ferreira@cloudservicesdevelopmentlab.com.br",
+    "source": "LinkedIn",
+    "score": 80,
+    "status": "new"
+  },
+  {
+    "id": 99,
+    "name": "Paulo Santos",
+    "company": "DevOps Innovations Solutions",
+    "email": "paulo.santos@devopsinnovationssolutions.com.br",
+    "source": "Email Marketing",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": 100,
+    "name": "Quitéria Oliveira",
+    "company": "Data Analytics Innovations Lab",
+    "email": "quiteria.oliveira@dataanalyticsinnovationslab.com.br",
+    "source": "Referral",
+    "score": 87,
+    "status": "contacted"
   }
 ]

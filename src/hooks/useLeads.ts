@@ -104,12 +104,43 @@ export const useLeads = () => {
     updateLead(lead.id, { status: 'converted' });
   };
 
+  const simulateLoading = async () => {
+    setLoading(true);
+    setError(null);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setLoading(false);
+  };
+
+  const simulateError = () => {
+    setError('Erro simulado para teste - falha na conexão com o servidor');
+    setLoading(false);
+  };
+
+  const clearData = () => {
+    setLeads([]);
+    setOpportunities([]);
+    setError(null);
+    setLoading(false);
+  };
+
+  const resetData = async () => {
+    setLoading(true);
+    setError(null);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setLeads(leadsData as Lead[]);
+    setLoading(false);
+  };
+
   return {
     leads,
     opportunities,
     loading,
     error,
     updateLead,
-    convertToOpportunity
+    convertToOpportunity,
+    simulateLoading,
+    simulateError,
+    clearData,
+    resetData
   };
 };

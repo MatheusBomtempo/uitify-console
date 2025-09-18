@@ -5,10 +5,22 @@ import { LeadsList } from './components/LeadsList';
 import { LeadDetailPanel } from './components/LeadDetailPanel';
 import { OpportunitiesList } from './components/OpportunitiesList';
 import { ThemeToggle } from './components/ThemeToggle';
+import { TestControls } from './components/TestControls';
 import { Lead } from './types';
 
 function App() {
-  const { leads, opportunities, loading, error, updateLead, convertToOpportunity } = useLeads();
+  const { 
+    leads, 
+    opportunities, 
+    loading, 
+    error, 
+    updateLead, 
+    convertToOpportunity,
+    simulateLoading,
+    simulateError,
+    clearData,
+    resetData
+  } = useLeads();
   const { theme, toggleTheme } = useTheme();
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -95,6 +107,13 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <TestControls
+          onSimulateLoading={simulateLoading}
+          onSimulateError={simulateError}
+          onClearData={clearData}
+          onResetData={resetData}
+        />
+        
         {activeTab === 'leads' ? (
           <LeadsList
             leads={leads}

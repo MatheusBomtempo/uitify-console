@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Lead, FilterState } from '../types';
+import { usePagination } from '../hooks/usePagination';
+import { Pagination } from './Pagination';
 
 interface LeadsListProps {
   leads: Lead[];
@@ -15,26 +17,6 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
     sortBy: 'score',
     sortOrder: 'desc'
   });
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'new': return 'bg-blue-100 text-blue-800';
-      case 'contacted': return 'bg-yellow-100 text-yellow-800';
-      case 'qualified': return 'bg-green-100 text-green-800';
-      case 'converted': return 'bg-purple-100 text-purple-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case 'new': return 'Novo';
-      case 'contacted': return 'Contatado';
-      case 'qualified': return 'Qualificado';
-      case 'converted': return 'Convertido';
-      default: return status;
-    }
-  };
 
   const filteredAndSortedLeads = leads
     .filter(lead => {
@@ -71,6 +53,43 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
         return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
       }
     });
+
+  const {
+    paginatedData,
+    paginationState,
+    goToPage,
+    nextPage,
+    previousPage,
+    resetPagination
+  } = usePagination({
+    data: filteredAndSortedLeads,
+    itemsPerPage: 10
+  });
+
+  // Reset pagination when filters change
+  useEffect(() => {
+    resetPagination();
+  }, [filters.search, filters.status, filters.sortBy, filters.sortOrder, resetPagination]);
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'new': return 'bg-blue-100 text-blue-800';
+      case 'contacted': return 'bg-yellow-100 text-yellow-800';
+      case 'qualified': return 'bg-green-100 text-green-800';
+      case 'converted': return 'bg-purple-100 text-purple-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case 'new': return 'Novo';
+      case 'contacted': return 'Contatado';
+      case 'qualified': return 'Qualificado';
+      case 'converted': return 'Convertido';
+      default: return status;
+    }
+  };
 
   if (loading) {
     return (
@@ -186,7 +205,7 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-              {filteredAndSortedLeads.map((lead) => (
+              {paginatedData.map((lead) => (
                 <tr
                   key={lead.id}
                   onClick={() => onLeadSelect(lead)}
@@ -219,9 +238,15 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
         </div>
       </div>
 
-      <div className="text-sm text-gray-500 dark:text-gray-400 text-center">
-        Mostrando {filteredAndSortedLeads.length} de {leads.length} leads
-      </div>
+      <Pagination
+        currentPage={paginationState.currentPage}
+        totalPages={paginationState.totalPages}
+        totalItems={paginationState.totalItems}
+        itemsPerPage={10}
+        onPageChange={goToPage}
+        onPrevious={previousPage}
+        onNext={nextPage}
+      />
     </div>
   );
 };
