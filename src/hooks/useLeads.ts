@@ -26,8 +26,6 @@ export const useLeads = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        // Simulate API latency, sorry haha
-        await new Promise(resolve => setTimeout(resolve, 200));
         
         // Only load initial data if no saved data exists
         const savedLeads = localStorage.getItem('uitify-leads');
@@ -70,34 +68,12 @@ export const useLeads = () => {
   }, [successMessage]);
 
   const updateLead = async (id: number, updates: Partial<Lead>) => {
-    // Backup previous state
-    const previousLeads = leads;
-    
-    // Optimistic update
+    // Update leads
     const updatedLeads = leads.map(lead => 
       lead.id === id ? { ...lead, ...updates } : lead
     );
     setLeads(updatedLeads);
-
-    try {
-      // Simulate API call with possible failure
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling) 
-      if (Math.random() < 0.1) {
-        throw new Error('Simulated API error');
-      }
-      
-      setSuccessMessage('Lead updated successfully!');
-      
-    } catch (err) {
-      // Rollback on error
-      setLeads(previousLeads);
-      setError('Failed to save changes. Please try again.');
-      
-      // Clear error after 3 seconds
-      setTimeout(() => setError(null), 3000);
-    }
+    setSuccessMessage('Lead updated successfully!');
   };
 
   const addLead = async (leadData: Omit<Lead, 'id'>) => {
@@ -106,86 +82,23 @@ export const useLeads = () => {
       id: Date.now() // Simple timestamp-based ID
     };
 
-    // Optimistic update
+    // Add lead
     setLeads(prev => [...prev, newLead]);
-
-    try {
-      // Simulate API call with possible failure
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling)
-      if (Math.random() < 0.1) {
-        throw new Error('Simulated API error');
-      }
-      
-      setSuccessMessage('Lead added successfully!');
-      
-    } catch (err) {
-      // Rollback on error - remove the added lead
-      setLeads(prev => prev.filter(lead => lead.id !== newLead.id));
-      setError('Failed to add lead. Please try again.');
-      
-      // Clear error after 3 seconds
-      setTimeout(() => setError(null), 2000);
-    }
+    setSuccessMessage('Lead added successfully!');
   };
 
   const deleteLead = async (id: number) => {
-    // Backup previous state
-    const previousLeads = leads;
-    
-    // Optimistic delete
+    // Delete lead
     const updatedLeads = leads.filter(lead => lead.id !== id);
     setLeads(updatedLeads);
-
-    try {
-      // Simulate API call with possible failure
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Simulate occasional failure (10% chance)
-      if (Math.random() < 0.1) {
-        throw new Error('Simulated API error');
-      }
-      
-      setSuccessMessage('Lead deleted successfully!');
-      
-    } catch (err) {
-      // Rollback on error
-      setLeads(previousLeads);
-      setError('Failed to delete lead. Please try again.');
-      
-      // Clear error after 3 seconds
-      setTimeout(() => setError(null), 3000);
-    }
+    setSuccessMessage('Lead deleted successfully!');
   };
 
   const deleteOpportunity = async (id: number) => {
-    // Backup previous state
-    const previousOpportunities = opportunities;
-    
-    // Optimistic delete
+    // Delete opportunity
     const updatedOpportunities = opportunities.filter(opp => opp.id !== id);
     setOpportunities(updatedOpportunities);
-
-    try {
-      // Simulate API call with possible failure
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling)
-      if (Math.random() < 0.1) {
-        throw new Error('Simulated API error');
-      }
-      
-      setSuccessMessage('Opportunity deleted successfully!');
-      
-    } catch (err) {
-      // Rollback on error
-      setOpportunities(previousOpportunities);
-      setError('Failed to delete opportunity. Please try again.');
-      
-      // Clear error after 3 seconds
-      setTimeout(() => setError(null), 3000);
-    }
+    setSuccessMessage('Opportunity deleted successfully!');
   };
 
   const convertToOpportunity = (lead: Lead, amount?: number) => {
@@ -205,31 +118,10 @@ export const useLeads = () => {
     setSuccessMessage('Lead converted to opportunity successfully!');
   };
 
-  // Utility functions for testing and development
-  const simulateLoading = async () => {
-    setLoading(true);
-    setError(null);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setLoading(false);
-  };
-
-  const simulateError = () => {
-    setError('Simulated error for testing - server connection failed');
-    setLoading(false);
-  };
-
-  const clearData = () => {
-    setLeads([]);
-    setOpportunities([]);
-    setError(null);
-    setLoading(false);
-  };
-
   const resetData = async () => {
     setLoading(true);
-    setError(null);
-    await new Promise(resolve => setTimeout(resolve, 1000));
     setLeads(leadsData as Lead[]);
+    setOpportunities([]);
     setLoading(false);
   };
 
@@ -244,9 +136,6 @@ export const useLeads = () => {
     deleteLead,
     deleteOpportunity,
     convertToOpportunity,
-    simulateLoading,
-    simulateError,
-    clearData,
     resetData
   };
 };
