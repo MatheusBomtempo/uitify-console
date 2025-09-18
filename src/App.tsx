@@ -10,24 +10,26 @@ import { AddLeadModal } from './components/AddLeadModal';
 import { Lead } from './types';
 
 function App() {
-  const { 
-    leads, 
-    opportunities, 
-    loading, 
-    error, 
+  const {
+    leads,
+    opportunities,
+    loading,
+    error,
     successMessage,
-    updateLead, 
+    updateLead,
     addLead,
     deleteLead,
     deleteOpportunity,
-    convertToOpportunity 
+    convertToOpportunity,
   } = useLeads();
   const { theme, toggleTheme } = useTheme();
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'leads' | 'opportunities'>('leads');
+  const [activeTab, setActiveTab] = useState<'leads' | 'opportunities'>(
+    'leads'
+  );
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  
+
   // Confirm modal state
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -39,7 +41,7 @@ function App() {
     isOpen: false,
     title: '',
     message: '',
-    onConfirm: () => {}
+    onConfirm: () => {},
   });
 
   const handleLeadSelect = (lead: Lead) => {
@@ -54,10 +56,10 @@ function App() {
 
   const handleLeadSave = async (id: number, updates: Partial<Lead>) => {
     await updateLead(id, updates);
-    
+
     // Update the selected lead with the new data
     if (selectedLead && selectedLead.id === id) {
-      setSelectedLead(prev => prev ? { ...prev, ...updates } : null);
+      setSelectedLead((prev) => (prev ? { ...prev, ...updates } : null));
     }
   };
 
@@ -66,30 +68,30 @@ function App() {
   };
 
   const handleDeleteLead = (id: number) => {
-    const lead = leads.find(l => l.id === id);
+    const lead = leads.find((l) => l.id === id);
     setConfirmModal({
       isOpen: true,
       title: 'Delete Lead',
       message: `Are you sure you want to delete "${lead?.name}"? This action cannot be undone.`,
       onConfirm: async () => {
         await deleteLead(id);
-        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+        setConfirmModal((prev) => ({ ...prev, isOpen: false }));
       },
-      type: 'danger'
+      type: 'danger',
     });
   };
 
   const handleDeleteOpportunity = (id: number) => {
-    const opportunity = opportunities.find(o => o.id === id);
+    const opportunity = opportunities.find((o) => o.id === id);
     setConfirmModal({
       isOpen: true,
       title: 'Delete Opportunity',
       message: `Are you sure you want to delete "${opportunity?.name}"? This action cannot be undone.`,
       onConfirm: async () => {
         await deleteOpportunity(id);
-        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+        setConfirmModal((prev) => ({ ...prev, isOpen: false }));
       },
-      type: 'danger'
+      type: 'danger',
     });
   };
 
@@ -110,9 +112,9 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <img 
-                src="/src/assets/logo.webp" 
-                alt="Uitify Logo" 
+              <img
+                src="/src/assets/logo.webp"
+                alt="Uitify Logo"
                 className="mr-3 brightness-0 dark:invert"
                 style={{ height: 'auto', width: 'auto', maxHeight: '32px' }}
               />
@@ -120,21 +122,9 @@ function App() {
                 Console
               </h1>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <ThemeToggle theme={theme} onToggle={toggleTheme} />
-              
-              {/* Add Lead Button */}
-              <button
-                onClick={() => setIsAddModalOpen(true)}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800"
-              >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Add Lead
-              </button>
-              
               <nav className="flex space-x-8">
                 <button
                   onClick={() => setActiveTab('leads')}
@@ -167,10 +157,20 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
           <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
             <div className="flex items-center">
-              <svg className="h-5 w-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg
+                className="h-5 w-5 text-green-400 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
               </svg>
-              <div className="text-green-800 dark:text-green-200">{successMessage}</div>
+              <div className="text-green-800 dark:text-green-200">
+                {successMessage}
+              </div>
             </div>
           </div>
         </div>
@@ -181,8 +181,16 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
             <div className="flex items-center">
-              <svg className="h-5 w-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              <svg
+                className="h-5 w-5 text-red-400 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                  clipRule="evenodd"
+                />
               </svg>
               <div className="text-red-800 dark:text-red-200">{error}</div>
             </div>
@@ -198,12 +206,13 @@ function App() {
             onLeadSelect={handleLeadSelect}
             onLeadEdit={handleEditLead}
             onLeadDelete={handleDeleteLead}
+            onAddLead={() => setIsAddModalOpen(true)}
             loading={loading}
             error={null} // Error now displayed globally
           />
         ) : (
-          <OpportunitiesList 
-            opportunities={opportunities} 
+          <OpportunitiesList
+            opportunities={opportunities}
             onOpportunityDelete={handleDeleteOpportunity}
           />
         )}
@@ -234,7 +243,7 @@ function App() {
         cancelText="Cancel"
         type={confirmModal.type}
         onConfirm={confirmModal.onConfirm}
-        onCancel={() => setConfirmModal(prev => ({ ...prev, isOpen: false }))}
+        onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
       />
     </div>
   );

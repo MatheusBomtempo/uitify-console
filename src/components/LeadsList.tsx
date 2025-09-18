@@ -6,11 +6,12 @@ interface LeadsListProps {
   onLeadSelect: (lead: Lead) => void;
   onLeadEdit: (lead: Lead) => void;
   onLeadDelete: (id: number) => void;
+  onAddLead: () => void;
   loading: boolean;
   error: string | null;
 }
 
-export const LeadsList = ({ leads, onLeadSelect, onLeadEdit, onLeadDelete, loading, error }: LeadsListProps) => {
+export const LeadsList = ({ leads, onLeadSelect, onLeadEdit, onLeadDelete, onAddLead, loading, error }: LeadsListProps) => {
   const [filters, setFilters] = useState<FilterState>({
     search: '',
     status: '',
@@ -94,7 +95,7 @@ export const LeadsList = ({ leads, onLeadSelect, onLeadEdit, onLeadDelete, loadi
   };
 
   const getPageNumbers = () => {
-    const pages = [];
+    const pages: (number | string)[] = [];
     const maxVisiblePages = 5;
     
     if (totalPages <= maxVisiblePages) {
@@ -222,6 +223,19 @@ export const LeadsList = ({ leads, onLeadSelect, onLeadEdit, onLeadDelete, loadi
               </button>
             </div>
           </div>
+        </div>
+        
+        {/* Add Lead Button - After Filters */}
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={onAddLead}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Add Lead
+          </button>
         </div>
       </div>
 

@@ -26,8 +26,8 @@ export const useLeads = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        // Simulate API latency
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Simulate API latency, sorry haha
+        await new Promise(resolve => setTimeout(resolve, 200));
         
         // Only load initial data if no saved data exists
         const savedLeads = localStorage.getItem('uitify-leads');
@@ -81,9 +81,9 @@ export const useLeads = () => {
 
     try {
       // Simulate API call with possible failure
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 300));
       
-      // Simulate occasional failure (10% chance)
+      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling) 
       if (Math.random() < 0.1) {
         throw new Error('Simulated API error');
       }
@@ -113,7 +113,7 @@ export const useLeads = () => {
       // Simulate API call with possible failure
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Simulate occasional failure (10% chance)
+      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling)
       if (Math.random() < 0.1) {
         throw new Error('Simulated API error');
       }
@@ -126,7 +126,7 @@ export const useLeads = () => {
       setError('Failed to add lead. Please try again.');
       
       // Clear error after 3 seconds
-      setTimeout(() => setError(null), 3000);
+      setTimeout(() => setError(null), 2000);
     }
   };
 
@@ -171,7 +171,7 @@ export const useLeads = () => {
       // Simulate API call with possible failure
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Simulate occasional failure (10% chance)
+      // Simulate occasional failure (10% chance just beacause you guys wanted to test the error handling)
       if (Math.random() < 0.1) {
         throw new Error('Simulated API error');
       }
