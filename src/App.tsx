@@ -6,6 +6,7 @@ import { LeadDetailPanel } from './components/LeadDetailPanel';
 import { OpportunitiesList } from './components/OpportunitiesList';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ConfirmModal } from './components/ConfirmModal';
+import { AddLeadModal } from './components/AddLeadModal';
 import { Lead } from './types';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     error, 
     successMessage,
     updateLead, 
+    addLead,
     deleteLead,
     deleteOpportunity,
     convertToOpportunity 
@@ -24,6 +26,7 @@ function App() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'leads' | 'opportunities'>('leads');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   
   // Confirm modal state
   const [confirmModal, setConfirmModal] = useState<{
@@ -95,6 +98,11 @@ function App() {
     setIsPanelOpen(true);
   };
 
+  const handleAddLead = async (leadData: Omit<Lead, 'id'>) => {
+    await addLead(leadData);
+    setIsAddModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
@@ -115,6 +123,18 @@ function App() {
             
             <div className="flex items-center space-x-4">
               <ThemeToggle theme={theme} onToggle={toggleTheme} />
+              
+              {/* Add Lead Button */}
+              <button
+                onClick={() => setIsAddModalOpen(true)}
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Add Lead
+              </button>
+              
               <nav className="flex space-x-8">
                 <button
                   onClick={() => setActiveTab('leads')}
@@ -196,6 +216,13 @@ function App() {
         onClose={handlePanelClose}
         onSave={handleLeadSave}
         onConvert={handleConvertLead}
+      />
+
+      {/* Add Lead Modal */}
+      <AddLeadModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSave={handleAddLead}
       />
 
       {/* Confirm Modal */}

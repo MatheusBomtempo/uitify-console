@@ -100,6 +100,36 @@ export const useLeads = () => {
     }
   };
 
+  const addLead = async (leadData: Omit<Lead, 'id'>) => {
+    const newLead: Lead = {
+      ...leadData,
+      id: Date.now() // Simple timestamp-based ID
+    };
+
+    // Optimistic update
+    setLeads(prev => [...prev, newLead]);
+
+    try {
+      // Simulate API call with possible failure
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Simulate occasional failure (10% chance)
+      if (Math.random() < 0.1) {
+        throw new Error('Simulated API error');
+      }
+      
+      setSuccessMessage('Lead added successfully!');
+      
+    } catch (err) {
+      // Rollback on error - remove the added lead
+      setLeads(prev => prev.filter(lead => lead.id !== newLead.id));
+      setError('Failed to add lead. Please try again.');
+      
+      // Clear error after 3 seconds
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
   const deleteLead = async (id: number) => {
     // Backup previous state
     const previousLeads = leads;
@@ -210,6 +240,7 @@ export const useLeads = () => {
     error,
     successMessage,
     updateLead,
+    addLead,
     deleteLead,
     deleteOpportunity,
     convertToOpportunity,
