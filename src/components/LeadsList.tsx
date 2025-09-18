@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Lead, FilterState } from '../types';
-import { usePagination } from '../hooks/usePagination';
-import { Pagination } from './Pagination';
 
 interface LeadsListProps {
   leads: Lead[];
@@ -17,6 +15,26 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
     sortBy: 'score',
     sortOrder: 'desc'
   });
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'new': return 'bg-blue-100 text-blue-800';
+      case 'contacted': return 'bg-yellow-100 text-yellow-800';
+      case 'qualified': return 'bg-green-100 text-green-800';
+      case 'converted': return 'bg-purple-100 text-purple-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case 'new': return 'New';
+      case 'contacted': return 'Contacted';
+      case 'qualified': return 'Qualified';
+      case 'converted': return 'Converted';
+      default: return status;
+    }
+  };
 
   const filteredAndSortedLeads = leads
     .filter(lead => {
@@ -54,43 +72,6 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
       }
     });
 
-  const {
-    paginatedData,
-    paginationState,
-    goToPage,
-    nextPage,
-    previousPage,
-    resetPagination
-  } = usePagination({
-    data: filteredAndSortedLeads,
-    itemsPerPage: 10
-  });
-
-  // Reset pagination when filters change
-  useEffect(() => {
-    resetPagination();
-  }, [filters.search, filters.status, filters.sortBy, filters.sortOrder, resetPagination]);
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'new': return 'bg-blue-100 text-blue-800';
-      case 'contacted': return 'bg-yellow-100 text-yellow-800';
-      case 'qualified': return 'bg-green-100 text-green-800';
-      case 'converted': return 'bg-purple-100 text-purple-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case 'new': return 'Novo';
-      case 'contacted': return 'Contatado';
-      case 'qualified': return 'Qualificado';
-      case 'converted': return 'Convertido';
-      default: return status;
-    }
-  };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -110,23 +91,23 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
   if (leads.length === 0) {
     return (
       <div className="text-center py-8">
-        <div className="text-gray-500">Nenhum lead encontrado</div>
+        <div className="text-gray-500">No leads found</div>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      {/* Filtros */}
+      {/* Filters */}
       <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Buscar
+              Search
             </label>
             <input
               type="text"
-              placeholder="Nome ou empresa..."
+              placeholder="Name or company..."
               value={filters.search}
               onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -142,17 +123,17 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
               onChange={(e) => setFilters(prev => ({ ...prev, status: e.target.value }))}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="">Todos os status</option>
-              <option value="new">Novo</option>
-              <option value="contacted">Contatado</option>
-              <option value="qualified">Qualificado</option>
-              <option value="converted">Convertido</option>
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="qualified">Qualified</option>
+              <option value="converted">Converted</option>
             </select>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Ordenar por
+              Sort by
             </label>
             <div className="flex space-x-2">
               <select
@@ -161,8 +142,8 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
                 className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="score">Score</option>
-                <option value="name">Nome</option>
-                <option value="company">Empresa</option>
+                <option value="name">Name</option>
+                <option value="company">Company</option>
               </select>
               <button
                 onClick={() => setFilters(prev => ({ 
@@ -178,7 +159,7 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
         </div>
       </div>
 
-      {/* Lista de leads */}
+      {/* Leads list */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -188,13 +169,13 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
                   Lead
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Empresa
+                  Company
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Email
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Fonte
+                  Source
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Score
@@ -205,7 +186,7 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-              {paginatedData.map((lead) => (
+              {filteredAndSortedLeads.map((lead) => (
                 <tr
                   key={lead.id}
                   onClick={() => onLeadSelect(lead)}
@@ -238,15 +219,9 @@ export const LeadsList = ({ leads, onLeadSelect, loading, error }: LeadsListProp
         </div>
       </div>
 
-      <Pagination
-        currentPage={paginationState.currentPage}
-        totalPages={paginationState.totalPages}
-        totalItems={paginationState.totalItems}
-        itemsPerPage={10}
-        onPageChange={goToPage}
-        onPrevious={previousPage}
-        onNext={nextPage}
-      />
+      <div className="text-sm text-gray-500 dark:text-gray-400 text-center">
+        Showing {filteredAndSortedLeads.length} of {leads.length} leads
+      </div>
     </div>
   );
 };

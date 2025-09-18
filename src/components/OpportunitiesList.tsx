@@ -20,21 +20,21 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
 
   const getStageLabel = (stage: string) => {
     switch (stage) {
-      case 'prospecting': return 'Prospecção';
-      case 'qualification': return 'Qualificação';
-      case 'proposal': return 'Proposta';
-      case 'negotiation': return 'Negociação';
-      case 'closed-won': return 'Ganho';
-      case 'closed-lost': return 'Perdido';
+      case 'prospecting': return 'Prospecting';
+      case 'qualification': return 'Qualification';
+      case 'proposal': return 'Proposal';
+      case 'negotiation': return 'Negotiation';
+      case 'closed-won': return 'Closed Won';
+      case 'closed-lost': return 'Closed Lost';
       default: return stage;
     }
   };
 
   const formatCurrency = (amount?: number) => {
     if (!amount) return '-';
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'BRL'
+      currency: 'USD'
     }).format(amount);
   };
 
@@ -42,9 +42,9 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
         <div className="text-center">
-          <div className="text-gray-500 dark:text-gray-400 mb-2">Nenhuma oportunidade criada ainda</div>
+          <div className="text-gray-500 dark:text-gray-400 mb-2">No opportunities created yet</div>
           <div className="text-sm text-gray-400 dark:text-gray-500">
-            Converta leads para criar oportunidades
+            Convert leads to create opportunities
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
         <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-          Oportunidades ({opportunities.length})
+          Opportunities ({opportunities.length})
         </h3>
       </div>
       
@@ -64,16 +64,16 @@ export const OpportunitiesList = ({ opportunities }: OpportunitiesListProps) => 
           <thead className="bg-gray-50 dark:bg-gray-700">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Nome
+                Name
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Conta
+                Account
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Estágio
+                Stage
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Valor
+                Amount
               </th>
             </tr>
           </thead>

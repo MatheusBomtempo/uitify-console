@@ -8,7 +8,7 @@ export const useLeads = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Carregar dados do localStorage
+  // Load data from localStorage
   useEffect(() => {
     const savedLeads = localStorage.getItem('uitify-leads');
     const savedOpportunities = localStorage.getItem('uitify-opportunities');
@@ -25,10 +25,10 @@ export const useLeads = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        // Simular latência da API
+        // Simulate API latency
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Só carregar dados iniciais se não houver dados salvos
+        // Only load initial data if no saved data exists
         const savedLeads = localStorage.getItem('uitify-leads');
         if (!savedLeads) {
           setLeads(leadsData as Lead[]);
@@ -37,7 +37,7 @@ export const useLeads = () => {
         
         setError(null);
       } catch (err) {
-        setError('Erro ao carregar os leads');
+        setError('Error loading leads');
       } finally {
         setLoading(false);
       }
@@ -46,14 +46,14 @@ export const useLeads = () => {
     loadData();
   }, []);
 
-  // Salvar leads no localStorage sempre que houver mudança
+  // Save leads to localStorage whenever there's a change
   useEffect(() => {
     if (leads.length > 0) {
       localStorage.setItem('uitify-leads', JSON.stringify(leads));
     }
   }, [leads]);
 
-  // Salvar oportunidades no localStorage sempre que houver mudança
+  // Save opportunities to localStorage whenever there's a change
   useEffect(() => {
     if (opportunities.length > 0) {
       localStorage.setItem('uitify-opportunities', JSON.stringify(opportunities));
@@ -61,37 +61,37 @@ export const useLeads = () => {
   }, [opportunities]);
 
   const updateLead = async (id: number, updates: Partial<Lead>) => {
-    // Backup do estado anterior
+    // Backup previous state
     const previousLeads = leads;
     
-    // Atualização otimista
+    // Optimistic update
     const updatedLeads = leads.map(lead => 
       lead.id === id ? { ...lead, ...updates } : lead
     );
     setLeads(updatedLeads);
 
     try {
-      // Simular chamada da API com possível falha
+      // Simulate API call with possible failure
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Simular falha ocasional (10% de chance)
+      // Simulate occasional failure (10% chance)
       if (Math.random() < 0.1) {
-        throw new Error('Erro simulado na API');
+        throw new Error('Simulated API error');
       }
       
     } catch (err) {
-      // Rollback em caso de erro
+      // Rollback on error
       setLeads(previousLeads);
-      setError('Erro ao salvar alterações. Tente novamente.');
+      setError('Failed to save changes. Please try again.');
       
-      // Limpar erro após 3 segundos
+      // Clear error after 3 seconds
       setTimeout(() => setError(null), 3000);
     }
   };
 
   const convertToOpportunity = (lead: Lead, amount?: number) => {
     const newOpportunity: Opportunity = {
-      id: Date.now(), // ID simples baseado em timestamp
+      id: Date.now(), // Simple timestamp-based ID
       name: lead.name,
       stage: 'prospecting',
       amount,
@@ -100,10 +100,11 @@ export const useLeads = () => {
 
     setOpportunities(prev => [...prev, newOpportunity]);
     
-    // Atualizar status do lead para converted
+    // Update lead status to converted
     updateLead(lead.id, { status: 'converted' });
   };
 
+  // Utility functions for testing and development
   const simulateLoading = async () => {
     setLoading(true);
     setError(null);
@@ -112,7 +113,7 @@ export const useLeads = () => {
   };
 
   const simulateError = () => {
-    setError('Erro simulado para teste - falha na conexão com o servidor');
+    setError('Simulated error for testing - server connection failed');
     setLoading(false);
   };
 

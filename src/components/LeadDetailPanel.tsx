@@ -37,7 +37,7 @@ export const LeadDetailPanel = ({
   const handleEmailChange = (email: string) => {
     setEditedLead(prev => prev ? { ...prev, email } : null);
     if (email && !validateEmail(email)) {
-      setEmailError('Formato de email inválido');
+      setEmailError('Invalid email format');
     } else {
       setEmailError(null);
     }
@@ -67,10 +67,10 @@ export const LeadDetailPanel = ({
 
   const getStatusOptions = () => {
     return [
-      { value: 'new', label: 'Novo' },
-      { value: 'contacted', label: 'Contatado' },
-      { value: 'qualified', label: 'Qualificado' },
-      { value: 'converted', label: 'Convertido' }
+      { value: 'new', label: 'New' },
+      { value: 'contacted', label: 'Contacted' },
+      { value: 'qualified', label: 'Qualified' },
+      { value: 'converted', label: 'Converted' }
     ];
   };
 
@@ -84,7 +84,7 @@ export const LeadDetailPanel = ({
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6 py-4">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Detalhes do Lead</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Lead Details</h2>
             <button
               onClick={onClose}
               className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
@@ -97,18 +97,18 @@ export const LeadDetailPanel = ({
 
           {/* Content */}
           <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
-            {/* Nome */}
+            {/* Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Nome
+                Name
               </label>
               <div className="text-sm text-gray-900 dark:text-gray-100 font-medium">{lead.name}</div>
             </div>
 
-            {/* Empresa */}
+            {/* Company */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Empresa
+                Company
               </label>
               <div className="text-sm text-gray-900 dark:text-gray-100">{lead.company}</div>
             </div>
@@ -139,7 +139,7 @@ export const LeadDetailPanel = ({
                     onClick={() => setIsEditing(true)}
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm"
                   >
-                    Editar
+                    Edit
                   </button>
                 </div>
               )}
@@ -179,16 +179,16 @@ export const LeadDetailPanel = ({
                     onClick={() => setIsEditing(true)}
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm"
                   >
-                    Editar
+                    Edit
                   </button>
                 </div>
               )}
             </div>
 
-            {/* Fonte */}
+            {/* Source */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Fonte
+                Source
               </label>
               <div className="text-sm text-gray-900 dark:text-gray-100">{lead.source}</div>
             </div>
@@ -201,23 +201,23 @@ export const LeadDetailPanel = ({
               <div className="text-sm text-gray-900 dark:text-gray-100 font-medium">{lead.score}</div>
             </div>
 
-            {/* Conversão para Oportunidade */}
+            {/* Convert to Opportunity */}
             {lead.status !== 'converted' && (
               <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
                 <h3 className="text-md font-medium text-gray-900 dark:text-gray-100 mb-4">
-                  Converter para Oportunidade
+                  Convert to Opportunity
                 </h3>
                 
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Valor (opcional)
+                      Amount (optional)
                     </label>
                     <input
                       type="number"
                       value={amount || ''}
                       onChange={(e) => setAmount(e.target.value ? Number(e.target.value) : undefined)}
-                      placeholder="Digite o valor..."
+                      placeholder="Enter amount..."
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -226,7 +226,7 @@ export const LeadDetailPanel = ({
                     onClick={handleConvert}
                     className="w-full bg-green-600 dark:bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-700 dark:hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
-                    Converter Lead
+                    Convert Lead
                   </button>
                 </div>
               </div>
@@ -241,14 +241,14 @@ export const LeadDetailPanel = ({
                   onClick={handleCancel}
                   className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 >
-                  Cancelar
+                  Cancel
                 </button>
                 <button
                   onClick={handleSave}
                   disabled={!!emailError}
                   className="flex-1 bg-blue-600 dark:bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Salvar
+                  Save
                 </button>
               </div>
             </div>
