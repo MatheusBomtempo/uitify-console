@@ -29,6 +29,13 @@ export const LeadDetailPanel = ({
     }
   }, [lead]);
 
+  // Update editedLead when the lead prop changes (after save)
+  useEffect(() => {
+    if (lead && !isEditing) {
+      setEditedLead({ ...lead });
+    }
+  }, [lead, isEditing]);
+
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);

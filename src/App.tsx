@@ -51,6 +51,11 @@ function App() {
 
   const handleLeadSave = async (id: number, updates: Partial<Lead>) => {
     await updateLead(id, updates);
+    
+    // Update the selected lead with the new data
+    if (selectedLead && selectedLead.id === id) {
+      setSelectedLead(prev => prev ? { ...prev, ...updates } : null);
+    }
   };
 
   const handleConvertLead = (lead: Lead, amount?: number) => {
